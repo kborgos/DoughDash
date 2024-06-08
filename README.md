@@ -4,19 +4,32 @@
 
 DoughDash is a food delivery service that allows users to schedule weekly deliveries of fresh baked goods from participating local bakeries.
 
+## Features
+
+### Core
+
+- [ ] Customers can sign up for an account.
+- [ ] Customers can navigate participating bakeries.
+- [ ] Customers can navigate a participating bakery's menu offering
+- [ ] Customers can add items to cart.
+- [ ] Customers can place orders.
+
+### Stretch goals
+
+- [ ] Drivers can sign up for an account.
+- [ ] Drivers can get orders assigned to them for delivery.
+
 ## Technologies
 
 ### React.js
 
-The front-end for this app will be developed using React.js.
+The front-end for this project will be developed using React.
 
 ### Django
 
 #### Models
 
-In its simplest form, DoughDash should allow customers to sign up for an account, navigate participating bakeries/menu offerings and place orders. As a stretch goal, it would also allow drivers to sign up for an account and get orders assigned to them for delivery.
-
-To support these capabilities, the following models are needed:
+To support service capabilities, the following models are needed:
 
 1. Customer (first_name, last_name_email, address, phone_number)
 2. Driver (first_name, last_name, email, address, phone_number)
@@ -48,4 +61,4 @@ All routes will support obtaining instances by ID by following the naming conven
 
 ### 3rd Party APIs
 
-DoughDash will leverage the Nutritonix API to obtain calories information for menu items. It will also use Google Places API to locate bakeries within a the zip code a customer provides.
+DoughDash will leverage the [Nutritonix]{https://www.nutritionix.com/} API to obtain calories information for menu items. It will also use [Google Places]{https://developers.google.com/maps} API to locate bakeries within a customer-provided zip code.
