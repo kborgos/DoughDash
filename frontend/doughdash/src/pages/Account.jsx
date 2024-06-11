@@ -1,7 +1,9 @@
 export default function Account() {
     return (
-      <>
-        <h1>ACCOUNT PAGE</h1>
-      </>
+      <main className="container-fluid">
+        <div className="px-4 py-1 my-4 text-left">
+          <h1 className="display-5 fw-bold">Account</h1>
+        </div>
+      </main>
     );
   }

@@ -37,6 +37,7 @@ export default function Navigation() {
           <Nav>
           <Nav.Link className="active" href="/home">Home</Nav.Link>
           <Nav.Link href="/account">Account</Nav.Link>
+          <Nav.Link href="/cart">Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
