@@ -9,6 +9,7 @@ DoughDash is a food delivery service that allows users to schedule weekly delive
 ### Core
 
 - [ ] Customers can sign up for an account.
+- [ ] Customers can log in to their account.
 - [ ] Customers can navigate participating bakeries.
 - [ ] Customers can navigate a participating bakery's menu offering.
 - [ ] Customers can add items to cart.
