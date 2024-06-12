@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import CartContext from '../contexts/CartContext'
 import { useLocation } from "react-router-dom";
 import MenuItemTile from "../components/MenuItemTile";
 
 export default function BakeryPage() {
+  const { cart, setCart } = useContext(CartContext)
+
   const [items, setItems] = useState([]);
   const location = useLocation()
   const { bakery } = location.state

@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import CartContext from '../contexts/CartContext'
 import { Link } from "react-router-dom";
 import RestaurantTile from "../components/RestaurantTile";
 
 export default function Home() {
+  const { cart, setCart } = useContext(CartContext)
   const [bakeries, setBakeries] = useState([]);
 
   // get all bakeries API call

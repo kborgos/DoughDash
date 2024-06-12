@@ -1,3 +1,5 @@
+import { useContext, useEffect } from 'react'
+import CartContext from '../contexts/CartContext';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -6,6 +8,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function Navigation() {
+  const { cart, setCart } = useContext(CartContext)
+
+  useEffect(() => {
+
+  }, [cart]);
+
   return (
     <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
       <Container>
@@ -37,7 +45,7 @@ export default function Navigation() {
           <Nav>
           <Nav.Link className="active" href="/home">Home</Nav.Link>
           <Nav.Link href="/account">Account</Nav.Link>
-          <Nav.Link href="/cart">Cart</Nav.Link>
+          <Nav.Link href="/cart">Cart { cart.length }</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
