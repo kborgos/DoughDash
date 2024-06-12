@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
 import RestaurantTile from "../components/RestaurantTile";
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
 
   // get all bakeries API call
   useEffect(() => {
-    const fetchCarData = async () => {
+    const fetchBakeryData = async () => {
       // function to get API data
       const apiData = await fetch("http://localhost:8000/restaurants/"); // get Response from API
       const bakeriesApiJSON = await apiData.json(); // Response --> JSON
@@ -14,7 +15,7 @@ export default function Home() {
       console.log(bakeries)
     };
 
-    fetchCarData(); // run API data getter
+    fetchBakeryData(); // run API data getter
   }, []);
 
     return (
@@ -23,14 +24,13 @@ export default function Home() {
           <h1 className="display-5 fw-bold">Home Page</h1>
           <div className="restaurant-grid container">
             <div className="row">
-              <RestaurantTile />
-              <RestaurantTile />
-              <RestaurantTile />
-              <RestaurantTile />
-              <RestaurantTile />
-              <RestaurantTile />
-              <RestaurantTile />
-              <RestaurantTile />
+              { bakeries.map((bakery, index) => (
+                <div className="col py-3">
+                  <Link to={`/bakeries/${bakery.id}`} state={{ bakery: bakery }}>
+                    <RestaurantTile key={index} name={bakery.name} address={bakery.address} />
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>
