@@ -3,8 +3,7 @@ import CartContext from '../contexts/CartContext'
 import { useLocation } from "react-router-dom";
 import MenuItemTile from "../components/MenuItemTile";
 
-export default function BakeryPage() {
-  const { cart, setCart } = useContext(CartContext)
+export default function BakeryPage({handleCart}) {
 
   const [items, setItems] = useState([]);
   const location = useLocation()
@@ -33,7 +32,7 @@ export default function BakeryPage() {
             <div className="row">
               { items.map((item, index) => (
                 <div className="col py-3">
-                  <MenuItemTile key={index} name={item.name} description={item.description} price={item.price} category={item.category} />
+                  <MenuItemTile key={index} name={item.name} description={item.description} price={item.price} category={item.category} handleCart={handleCart} />
                 </div>
               ))}
             </div>

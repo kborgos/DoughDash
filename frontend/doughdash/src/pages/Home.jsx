@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import RestaurantTile from "../components/RestaurantTile";
 
 export default function Home() {
-  const { cart, setCart } = useContext(CartContext)
+  
+  const cart = useContext(CartContext)
   const [bakeries, setBakeries] = useState([]);
 
   // get all bakeries API call

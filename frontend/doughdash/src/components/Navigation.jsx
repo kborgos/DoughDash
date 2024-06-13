@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react'
+import { Link } from "react-router-dom"
 import CartContext from '../contexts/CartContext';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -8,16 +9,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function Navigation() {
-  const { cart, setCart } = useContext(CartContext)
 
-  useEffect(() => {
-
-  }, [cart]);
+  const cart = useContext(CartContext)
 
   return (
     <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/home">DoughDash</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/home">DoughDash</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -30,22 +28,11 @@ export default function Navigation() {
               />
               <Button variant="outline-success">Search</Button>
             </Form>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
           </Nav>
           <Nav>
-          <Nav.Link className="active" href="/home">Home</Nav.Link>
-          <Nav.Link href="/account">Account</Nav.Link>
-          <Nav.Link href="/cart">Cart { cart.length }</Nav.Link>
+            <Nav.Link as={Link} to="/home">Home</Nav.Link>
+            <Nav.Link as={Link} to="/account">Account</Nav.Link>
+            <Nav.Link as={Link} to="/cart">Cart { cart.length }</Nav.Link>            
           </Nav>
         </Navbar.Collapse>
       </Container>
