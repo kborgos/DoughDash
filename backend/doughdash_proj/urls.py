@@ -23,4 +23,5 @@ urlpatterns = [
     path('drivers/', include("driver_app.urls")),
     path('orders/', include("order_app.urls")),
     path('restaurants/', include("restaurant_app.urls")),
+    path('accounts/', include("accounts.urls"))
 ]

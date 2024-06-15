@@ -1,26 +1,36 @@
 import { useState, useEffect, useContext } from 'react'
-import CartContext from '../contexts/CartContext'
+import UserContext from '../contexts/UserContext';
 import { useLocation } from "react-router-dom";
 import MenuItemTile from "../components/MenuItemTile";
+import { getMenuData } from '../api/authApi';
 
 export default function BakeryPage({handleCart}) {
+  const userToken = useContext(UserContext)
 
   const [items, setItems] = useState([]);
   const location = useLocation()
   const { bakery } = location.state
 
+  const createMenuItemsList = () => {
+    return items.map((item, index) => (
+      <div className="col py-3">
+        <MenuItemTile key={index} name={item.name} description={item.description} price={item.price} category={item.category} handleCart={handleCart} />
+      </div>
+    ))
+  }
+
   // get all bakeries API call
   useEffect(() => {
-    const fetchMenuData = async () => {
-      // function to get API data
-      const apiData = await fetch("http://localhost:8000/restaurants/" + bakery.id + "/"); // get Response from API
-      const menuItemsJSON = await apiData.json(); // Response --> JSON
-      setItems(menuItemsJSON["fields"]["menu_items"]);
+    async function performGetMenuItems() { // get all menu items API call
+      console.log("Getting menu items...")
+      const data = await getMenuData(userToken, bakery.id)
+      setItems(data["fields"]["menu_items"]);
       console.log(items)
-    };
-
-    fetchMenuData(); // run API data getter
-  }, []);
+    }
+    if(userToken) {
+      performGetMenuItems()
+    }
+  }, [userToken]);
   
     return (
       <main className="container-fluid">
@@ -30,11 +40,7 @@ export default function BakeryPage({handleCart}) {
           <h2 className="display-10 my-4 fw-bold">Menu Items</h2>
           <div className="menu-item-grid container">
             <div className="row">
-              { items.map((item, index) => (
-                <div className="col py-3">
-                  <MenuItemTile key={index} name={item.name} description={item.description} price={item.price} category={item.category} handleCart={handleCart} />
-                </div>
-              ))}
+              { createMenuItemsList() }
             </div>
           </div>
         </div>
